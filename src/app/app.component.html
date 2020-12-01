@@ -1,11 +1,20 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Home automation</span>
+</mat-toolbar>
 
-
-<nav>
-  <ul>
-    <li><a routerlink="/">Home</a></li>
-    <li><a>Lights</a></li>
-    <li><a>Measurements</a></li>
-    <li><a routerlink="/settings">Settings</a></li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened="true">
+    <nav>
+      <mat-list>
+        <mat-list-item><a routerLink="/">Home</a></mat-list-item>
+        <mat-list-item><a routerLink="/settings">Settings</a></mat-list-item>
+      </mat-list>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
