@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnChanges {
 
   AddLight(name: string){
     console.log("Button clicked");
+    this.store.dispatch(new AddLight({id: 5, name: name, state: false}));
     //this.lights.push({id: 5, name: name, state: false});
   }
 }

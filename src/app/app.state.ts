@@ -1,6 +1,7 @@
-import { State, Selector } from '@ngxs/store';
+import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { Light } from './app.model'
 import { Injectable } from '@angular/core';
+import { AddLight } from './core/light.actions';
 
 export class AppStateModel {
     lights: Light[];
@@ -32,4 +33,12 @@ export class AppStateModel {
 @Injectable()
 export class AppState {
     @Selector() static lights(state: AppStateModel) { return state.lights; }
+
+    @Action(AddLight)
+    addLight(ctx: StateContext<AppStateModel>, { light }: AddLight){
+        var current = ctx.getState().lights;
+        lights: [...current, light];
+        current = ctx.getState().lights;
+        console.log(current);
+    }
 }
