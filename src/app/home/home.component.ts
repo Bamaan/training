@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store} from '@ngxs/store';
+import { Light } from '../app.model'
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+ 
+  test = [1, 2, 3];
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
+    console.log(this.test)
+     //this.store.dispatch(new Light()).subscribe((response) => {
+    // });
   }
 
 }
