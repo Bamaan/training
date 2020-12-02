@@ -1,4 +1,4 @@
-<div *ngFor="let light of lights" class="lightName">
+<div *ngFor="let light of lights$ | async" class="lightName">
      <h1>{{ light.name }}</h1>
      {{ light.id }}, {{light.state}}
 </div>

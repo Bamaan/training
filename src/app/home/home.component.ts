@@ -1,7 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Store} from '@ngxs/store';
+import { Store, Select} from '@ngxs/store';
 import { Light } from '../app.model'
 import { AddLight } from '../core/light.actions';
+import { Observable } from 'rxjs';
+import { AppState } from '../app.state';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +11,7 @@ import { AddLight } from '../core/light.actions';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnChanges {
- 
-  lights = [
-    {
-        id: 1,
-        name: "center",
-        state: false
-    },
-    {
-        id: 2,
-        name: "window",
-        state: false
-    },
-    {
-        id: 3,
-        name: "kitchen",
-        state: false
-    }
-  ];
-
+  @Select(AppState.lights) lights$: Observable<Light[]>;
   constructor(private store: Store) {}
 
   ngOnChanges(changes){
@@ -39,6 +23,6 @@ export class HomeComponent implements OnInit, OnChanges {
 
   AddLight(name: string){
     console.log("Button clicked");
-    this.lights.push({id: 5, name: name, state: false});
+    //this.lights.push({id: 5, name: name, state: false});
   }
 }

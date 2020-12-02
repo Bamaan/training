@@ -1,4 +1,4 @@
-import { State } from '@ngxs/store';
+import { State, Selector } from '@ngxs/store';
 import { Light } from './app.model'
 import { Injectable } from '@angular/core';
 
@@ -30,4 +30,6 @@ export class AppStateModel {
 })
 
 @Injectable()
-export class AppState {}
+export class AppState {
+    @Selector() static lights(state: AppStateModel) { return state.lights; }
+}
