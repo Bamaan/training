@@ -1,5 +1,6 @@
 import { State } from '@ngxs/store';
 import { Light } from './app.model'
+import { Injectable } from '@angular/core';
 
 export class AppStateModel {
     lights: Light[];
@@ -8,7 +9,7 @@ export class AppStateModel {
 @State<AppStateModel>({
     name: 'Home',
     defaults: {
-        lights: [
+        lights : [
             {
                 id: 1,
                 name: "center",
@@ -28,4 +29,5 @@ export class AppStateModel {
     }
 })
 
+@Injectable()
 export class AppState {}

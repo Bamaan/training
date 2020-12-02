@@ -1,4 +1,7 @@
-<p>home works!</p>
-<p>home works!</p>
+<div *ngFor="let light of lights" class="lightName">
+     <h1>{{ light.name }}</h1>
+     {{ light.id }}, {{light.state}}
+</div>
 
-      <h1 *ngFor="let light of test" class="lightName"> {{ light }} </h1>
+<label>Name: <input #newName></label>
+<button (click)="AddLight(newName.value)">Add light</button>
