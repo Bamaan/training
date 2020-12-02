@@ -2,6 +2,7 @@ import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { Light } from './app.model'
 import { Injectable } from '@angular/core';
 import { AddLight } from './core/light.actions';
+import { RouteConfigLoadEnd } from '@angular/router';
 
 export class AppStateModel {
     lights: Light[];
@@ -37,7 +38,8 @@ export class AppState {
     @Action(AddLight)
     addLight(ctx: StateContext<AppStateModel>, { light }: AddLight){
         var current = ctx.getState().lights;
-        lights: [...current, light];
+        console.log(light);
+        ctx.patchState({ lights: [...current, light]});
         current = ctx.getState().lights;
         console.log(current);
     }
