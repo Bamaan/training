@@ -19,11 +19,11 @@ export class LightComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ToggleLight(id) {
+  ToggleLight(id: number) {
     this.store.dispatch(new ToggleLight(id));
   }
 
-  RenameLight(id, name) {
+  RenameLight(id: number, name: string) {
     this.store.dispatch(new RenameLight(id, name));
   }
 }

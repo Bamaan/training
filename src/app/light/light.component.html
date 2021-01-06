@@ -1,9 +1,11 @@
 <h2>{{ light.name }}</h2>
 {{ light.state }}
-<button (click)="ToggleLight(light.id)">Toggle</button>
+<button mat-mini-fab color="primary" (click)="ToggleLight(light.id)">
+  <mat-icon>menu</mat-icon>
+</button>
 <div [hidden]=editMode>
-  <label>Name: <input #editName value={{light.name}}></label>
-  <button (click)="RenameLight(light.id, editName.value)">Save</button>
-  <button (click)="editMode=!editMode">Cancel</button>
+  <label>Name: <input matInput #editName value={{light.name}}></label>
+  <button mat-raised-button color="primary" (click)="RenameLight(light.id, editName.value)">Save</button>
+  <button mat-raised-button (click)="editMode=!editMode">Cancel</button>
 </div>
-<button [hidden]=!editMode (click)="editMode=!editMode">Edit name</button>
+<button mat-raised-button [hidden]=!editMode (click)="editMode=!editMode">Edit name</button>
