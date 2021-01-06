@@ -1,8 +1,7 @@
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { Light } from './app.model'
 import { Injectable } from '@angular/core';
-import { AddLight } from './core/light.actions';
-import { RouteConfigLoadEnd } from '@angular/router';
+import { AddLight, ToggleLight } from './core/light.actions';
 
 export class AppStateModel {
     lights: Light[];
@@ -36,11 +35,27 @@ export class AppState {
     @Selector() static lights(state: AppStateModel) { return state.lights; }
 
     @Action(AddLight)
-    addLight(ctx: StateContext<AppStateModel>, { light }: AddLight){
-        var current = ctx.getState().lights;
-        console.log(light);
-        ctx.patchState({ lights: [...current, light]});
-        current = ctx.getState().lights;
-        console.log(current);
+    addLight(ctx: StateContext<AppStateModel>, { lightName }: AddLight){
+        const { lights } = ctx.getState();
+        var highestId = -1;
+        lights.forEach(light => { highestId = Math.max(highestId, light.id)});
+        ctx.patchState({ lights: [...lights,  {id: highestId + 1, name: lightName, state: false}]});
+    }
+
+    @Action(ToggleLight)
+    toggleLight(ctx: StateContext<AppStateModel>, { lightId }: ToggleLight){
+        const { lights } = ctx.getState();
+        ctx.patchState({ lights: [...lights].map(
+            light => {
+                if (light.id == lightId)
+                { 
+                    return {
+                        ...light,
+                        state: !light.state
+                    }
+                }
+            return light;
+            })
+        });
     }
 }

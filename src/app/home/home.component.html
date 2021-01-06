@@ -1,5 +1,6 @@
 <div *ngFor="let light of lights$ | async" class="lightName">
      <h1>{{ light.name }}</h1>
+     <button (click)="ToggleLight(light.id)">Toggle</button>
      {{ light.id }}, {{light.state}}
 </div>
 
