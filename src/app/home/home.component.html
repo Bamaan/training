@@ -1,6 +1,7 @@
-<div *ngFor="let light of lights$ | async" class="lightName">
-  <app-light></app-light>
+<div *ngFor="let light of lights$ | async" class="lights">
+  <app-light [light]="light"></app-light>
 </div>
 
-<label>Name: <input #newName></label>
+<br />
+<label>Name: <input #newName placeholder="New name"></label>
 <button (click)="AddLight(newName.value)">Add light</button>

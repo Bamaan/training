@@ -24,12 +24,4 @@ export class HomeComponent implements OnInit, OnChanges {
   AddLight(name: string) {
     this.store.dispatch(new AddLight(name));
   }
-
-  ToggleLight(id) {
-    this.store.dispatch(new ToggleLight(id));
-  }
-
-  RenameLight(id, name) {
-    this.store.dispatch(new RenameLight(id, name));
-  }
 }

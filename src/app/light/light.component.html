@@ -1,1 +1,9 @@
-<p>light works!</p>
+<h2>{{ light.name }}</h2>
+{{ light.state }}
+<button (click)="ToggleLight(light.id)">Toggle</button>
+<div [hidden]=editMode>
+  <label>Name: <input #editName value={{light.name}}></label>
+  <button (click)="RenameLight(light.id, editName.value)">Save</button>
+  <button (click)="editMode=!editMode">Cancel</button>
+</div>
+<button [hidden]=!editMode (click)="editMode=!editMode">Edit name</button>
