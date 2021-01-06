@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Light } from '../app.model'
-import { AddLight, ToggleLight } from '../core/light.actions';
+import { AddLight, ToggleLight, RenameLight } from '../core/light.actions';
 import { Observable } from 'rxjs';
 import { AppState } from '../app.state';
 
@@ -22,11 +22,14 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   AddLight(name: string) {
-    //this.store.dispatch(new AddLight({id: 5, name: name, state: false}));
     this.store.dispatch(new AddLight(name));
   }
 
   ToggleLight(id) {
     this.store.dispatch(new ToggleLight(id));
+  }
+
+  RenameLight(id, name) {
+    this.store.dispatch(new RenameLight(id, name));
   }
 }

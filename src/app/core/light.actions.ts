@@ -7,7 +7,7 @@ export class AddLight {
 
 export class RenameLight {
   static readonly type = '[Home] Rename Light';
-  constructor(public light: Light) { }
+  constructor(public lightId: number, public lightName: string) { }
 }
 
 export class ToggleLight {

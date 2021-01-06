@@ -1,7 +1,7 @@
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { Light } from './app.model'
 import { Injectable } from '@angular/core';
-import { AddLight, ToggleLight } from './core/light.actions';
+import { AddLight, ToggleLight, RenameLight } from './core/light.actions';
 
 export class AppStateModel {
   lights: Light[];
@@ -51,6 +51,23 @@ export class AppState {
             return {
               ...light,
               state: !light.state
+            }
+          }
+          return light;
+        })
+    });
+  }
+
+  @Action(RenameLight)
+  renameLight(ctx: StateContext<AppStateModel>, { lightId, lightName }: RenameLight) {
+    const { lights } = ctx.getState();
+    ctx.patchState({
+      lights: [...lights].map(
+        light => {
+          if (light.id === lightId) {
+            return {
+              ...light,
+              name: lightName
             }
           }
           return light;
