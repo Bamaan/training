@@ -20,13 +20,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LightComponent } from './light/light.component';
+import { OnOffPipe } from './on-off.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SettingsComponent,
-    LightComponent
+    LightComponent,
+    OnOffPipe
   ],
   imports: [
     BrowserModule,
